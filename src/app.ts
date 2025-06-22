@@ -1,8 +1,7 @@
 import express, { Application, Request, Response } from "express";
 
-import { borrowRoutes } from "./controllers/borrow_controller";
-import { bookRoutes } from "./controllers/book_controller";
-
+import { borrowRoutes } from "./App/controllers/borrow_controller";
+import { bookRoutes } from "./App/controllers/book_controller";
 const app:Application=express()
 app.use(express.json())
 
