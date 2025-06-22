@@ -12,12 +12,23 @@ bookRoutes.get("/",async (req:Request,res:Response) => {
   const {filter,sort,limit,sortBy}=req.query
   const parseLimit=parseInt(limit as string)
   const sortOrder=sort ==="desc"?-1:1
+  if(filter||(sortOrder&&sortBy)||limit){
   const result= await Book.find({genre:filter}).sort({[sortBy as string]:sortOrder}).limit(parseLimit)
   res.status(201).json({
      success: true,
   message: "Books retrieved successfully",
   data:result
-  })   
+  }) 
+  }
+  else{
+    const result= await Book.find()
+  res.status(201).json({
+     success: true,
+  message: "Books retrieved successfully",
+  data:result
+  }) 
+  }
+  
 })
 bookRoutes.get("/:bookId",async (req:Request,res:Response) => {
   const bookId=req.params.bookId

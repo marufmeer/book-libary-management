@@ -16,4 +16,3 @@ const bootstrap=async()=>{
   
 }
 bootstrap()
-export default server
